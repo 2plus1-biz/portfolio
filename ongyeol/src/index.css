@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --color-ong-bg: #FAF8F4;
+  --color-ong-card: #FFFFFF;
+  --color-ong-beige: #D2B49A;
+  --color-ong-terracotta: #A36E47;
+  --color-ong-olive: #6A684B;
+  --color-ong-olive-dark: #55533A;
+  --color-ong-brown: #715C45;
+  --color-ong-brown-light: #8C7760;
+}
+
+* {
+  word-break: keep-all;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+/* 한글 기울임체(italic) 금지 */
+em, i, cite, .italic {
+  font-style: normal !important;
+}
+
+body {
+  background-color: #FAF8F4;
+  color: #715C45;
+  line-height: 1.7;
+}
+
+/* ===== Page entrance reveal (set by src/hooks/usePageReveal.ts) =====
+   Only elements tagged by JS are affected; without JS everything is visible. */
+:root {
+  --reveal-distance: 16px;
+  --reveal-duration: 0.62s;
+  --reveal-step: 70ms;
+  --reveal-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --reveal-distance: 10px;
+    --reveal-duration: 0.55s;
+    --reveal-step: 45ms;
+  }
+}
+
+@keyframes ong-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance), 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-reveal='pending'] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+}
+
+[data-reveal='in'] {
+  animation: ong-reveal var(--reveal-duration) var(--reveal-ease) both;
+}
+
+[data-reveal='in'][data-reveal-step='1'] { animation-delay: calc(var(--reveal-step) * 1); }
+[data-reveal='in'][data-reveal-step='2'] { animation-delay: calc(var(--reveal-step) * 2); }
+[data-reveal='in'][data-reveal-step='3'] { animation-delay: calc(var(--reveal-step) * 3); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

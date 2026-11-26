@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Local caches and AI Studio package-manager cache
+.gmp_cache/
+bun.lock

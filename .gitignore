@@ -1,0 +1,10 @@
+# 작업기록(개인 기록)은 저장소에 넣지 않음
+*_작업기록*.md
+# 환경 설정·비밀
+.env
+.env.*
+!.env.example
+# 빌드 결과·패키지
+node_modules/
+dist/
+.DS_Store

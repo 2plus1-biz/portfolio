@@ -1,0 +1,5 @@
+# Static one-page site: no real build. The project publishes "dist",
+# so copy the page and images there fresh on every deploy.
+[build]
+  command = "rm -rf dist && mkdir dist && cp index.html *.webp dist/"
+  publish = "dist"
